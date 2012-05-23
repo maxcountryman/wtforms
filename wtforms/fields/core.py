@@ -337,8 +337,8 @@ class Label(object):
     def __html__(self):
         return self()
 
-    def __call__(self, text=None, **kwargs):
-        kwargs['for'] = self.field_id
+    def __call__(self, field_id=None, text=None, **kwargs):
+        kwargs['for'] = field_id or self.field_id
         attributes = widgets.html_params(**kwargs)
         return widgets.HTMLString(u'<label %s>%s</label>' % (attributes, text or self.text))
 
